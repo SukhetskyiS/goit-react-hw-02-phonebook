@@ -15,7 +15,10 @@ code {
     monospace;
 }
 
-
+li {
+  display: flex;
+  align-items: center;
+}
 .contact-form {
   display: grid;
   border: 1px red;
@@ -49,4 +52,5 @@ button:hover {
 
 .contact-data {
   font-size: 35px;
+  margin-right: 30px;
 }
