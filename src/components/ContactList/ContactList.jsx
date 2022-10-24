@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class ContactList extends Component {
   render() {
@@ -19,3 +20,14 @@ export class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  formContactsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  deleteContact: PropTypes.func,
+};
