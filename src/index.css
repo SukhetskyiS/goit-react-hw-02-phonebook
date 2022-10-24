@@ -7,9 +7,46 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-left: 50px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.contact-form {
+  display: grid;
+  border: 1px red;
+}
+
+.contact-form__input {
+  width: 25%;
+  height: 35px;
+  margin-top: 10px;
+}
+
+button {
+  width: 250px;
+  height: 50px;
+  font-size: 25px;
+  background-color: white;
+  border-radius: 6px;
+}
+button:hover {
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+.contact-form__search {
+  display: flex;
+  width: 25%;
+  height: 35px;
+  margin-top: 10px;
+}
+
+.contact-data {
+  font-size: 35px;
 }

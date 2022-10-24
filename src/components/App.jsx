@@ -15,6 +15,41 @@ export class App extends Component {
     filter: '',
   };
 
+  handleSubmit = (name, number) => {
+    if (this.state.contacts.some(contact => contact.name === name)) {
+      return alert(`${name} is already in contacts`);
+    }
+    this.setState(prevState => {
+      return {
+        contacts: [
+          ...prevState.contacts,
+          {
+            id: nanoid(),
+            name,
+            number,
+          },
+        ],
+      };
+    });
+  };
+
+  onFilterContacts = () => {
+    return this.state.contacts.filter(item =>
+      item.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
+
+  handleDeleteContact = id => {
+    this.setState(prevState => {
+      return { contacts: prevState.contacts.filter(item => item.id !== id) };
+    });
+  };
+
+  onFindContact = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
   render() {
     return (
       <div
@@ -27,10 +62,13 @@ export class App extends Component {
         }}
       >
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm addContact={this.handleSubmit} />
         <h2>Contacts</h2>
-        {/* <Filter /> */}
-        {/* <ContactList /> */}
+        <Filter searchForm={this.onFindContact} filter={this.state.filter} />
+        <ContactList
+          formContactsList={this.onFilterContacts()}
+          deleteContact={this.handleDeleteContact}
+        />
       </div>
     );
   }
